@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GrowPWE public reference record",
+  "type": "object",
+  "required": [
+    "id",
+    "category",
+    "source",
+    "claim",
+    "evidence_type",
+    "verification_status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "category": {
+      "enum": [
+        "equipment_specification",
+        "measurement_reference",
+        "financial_reference",
+        "community_report",
+        "academic_study"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "url",
+        "title",
+        "accessed_at",
+        "reuse_status"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "type": "string"
+        },
+        "author_or_publisher": {
+          "type": "string"
+        },
+        "published_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "accessed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reuse_status": {
+          "enum": [
+            "link_and_original_summary_only",
+            "licensed_reuse",
+            "permission_granted"
+          ]
+        },
+        "license": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "claim": {
+      "type": "string"
+    },
+    "evidence_type": {
+      "enum": [
+        "manufacturer_declared",
+        "independently_measured",
+        "reference_standard",
+        "anecdotal_report",
+        "academic_study"
+      ]
+    },
+    "verification_status": {
+      "enum": [
+        "pending",
+        "verified",
+        "rejected"
+      ]
+    },
+    "value": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ]
+    },
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "measurement_conditions": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "study": {
+      "type": "object",
+      "required": [
+        "institution",
+        "document_type",
+        "species",
+        "sample_size",
+        "design",
+        "limitations"
+      ],
+      "properties": {
+        "institution": {
+          "type": "string"
+        },
+        "document_type": {
+          "enum": [
+            "peer_reviewed_article",
+            "thesis",
+            "dissertation",
+            "undergraduate_thesis",
+            "technical_report",
+            "preprint"
+          ]
+        },
+        "doi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "species": {
+          "type": "string"
+        },
+        "sample_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "design": {
+          "type": "string"
+        },
+        "controls": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "uncertainty": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "academic_study"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "study"
+        ]
+      }
+    }
+  ]
+}

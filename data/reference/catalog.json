@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "status": "awaiting_source_verification",
+  "records": [],
+  "sources": [
+    {
+      "id": "nist-sp811",
+      "url": "https://www.nist.gov/pml/special-publication-811",
+      "category": "measurement_reference",
+      "verification_status": "blocked_by_network_policy"
+    },
+    {
+      "id": "samsung-lm301b",
+      "url": "https://led.samsung.com/lighting/mid-power-leds/3030-leds/lm301b/",
+      "category": "manufacturer_specification",
+      "verification_status": "blocked_by_network_policy"
+    },
+    {
+      "id": "samsung-lm281b-plus",
+      "url": "https://led.samsung.com/lighting/mid-power-leds/2835-leds/lm281b-plus/",
+      "category": "manufacturer_specification",
+      "verification_status": "blocked_by_network_policy"
+    },
+    {
+      "id": "ufrj-repository",
+      "institution": "UFRJ",
+      "url": "https://pantheon.ufrj.br/",
+      "category": "academic_repository_candidate",
+      "verification_status": "blocked_by_network_policy",
+      "contains_verified_relevant_studies": false
+    },
+    {
+      "id": "ufrgs-repository",
+      "institution": "UFRGS",
+      "url": "https://lume.ufrgs.br/",
+      "category": "academic_repository_candidate",
+      "verification_status": "blocked_by_network_policy",
+      "contains_verified_relevant_studies": false
+    },
+    {
+      "id": "ufsc-repository",
+      "institution": "UFSC",
+      "url": "https://repositorio.ufsc.br/",
+      "category": "academic_repository_candidate",
+      "verification_status": "blocked_by_network_policy",
+      "contains_verified_relevant_studies": false
+    },
+    {
+      "id": "ufla-repository",
+      "institution": "UFLA",
+      "url": "https://repositorio.ufla.br/",
+      "category": "academic_repository_candidate",
+      "verification_status": "blocked_by_network_policy",
+      "contains_verified_relevant_studies": false
+    },
+    {
+      "id": "ufv-repository",
+      "institution": "UFV",
+      "url": "https://locus.ufv.br/",
+      "category": "academic_repository_candidate",
+      "verification_status": "blocked_by_network_policy",
+      "contains_verified_relevant_studies": false
+    }
+  ],
+  "source_policy": {
+    "cultivation_reference_priority": [
+      "UFRJ",
+      "other_brazilian_federal_universities"
+    ],
+    "community_reports": "supplementary_not_initial_evidence",
+    "require_full_text_verification": true,
+    "cross_species_extrapolation": "not_evidence_for_cannabis",
+    "institution_alone_does_not_establish_quality": true
+  }
+}
