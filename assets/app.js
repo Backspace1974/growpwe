@@ -7,7 +7,7 @@ const groups = [
     ['lotName', 'Nome do lote', 'text', {required:true,maxLength:80}],
     ['prefix', 'Prefixo de identificação', 'text', {required:true,maxLength:8,value:'GP',pattern:'[A-Za-z0-9]{1,8}',hint:'Letras e números, até 8 caracteres. O sistema acrescenta um código de lote e a sequência.'}],
     ['planned', 'Quantidade planejada', 'number', {required:true,min:1,max:1000,step:1,value:1}],
-    ['started', 'Unidades iniciadas', 'number', {required:true,min:0,max:1000,step:1,value:1,hint:'Somente estas unidades receberão registros e etiquetas. Máximo de 1.000 por cadastro.'}],
+    ['started', 'Quantidade de espécimes neste lote', 'number', {required:true,min:0,max:1000,step:1,value:1,hint:'Somente estas unidades receberão registros e etiquetas. Máximo de 1.000 por cadastro.'}],
     ['startDate', 'Data de início', 'date'], ['phase', 'Fase registrada', 'select', {options:phaseOptions}],
     ['responsible', 'Responsável / código da equipe', 'text'], ['cycle', 'Ciclo / projeto de pesquisa', 'text']
   ]},
@@ -65,6 +65,7 @@ const groups = [
 const fields = groups.flatMap(g=>g.fields);
 let state, lastRaw = null, storageBlocked = false, storageCorrupt = false;
 let filter = 'all', step = 0, reviewedDraft = null, detailedSpecimen = null;
+let cultivarPicker, autoLotName=null, plannedEdited=false;
 const selected = new Set(); let printSelection = [];
 function uuid(){return crypto.randomUUID()}
 function validState(data){
@@ -111,15 +112,34 @@ function createField(definition){
   return wrapper;
 }
 function buildForm(){
-  for(const group of groups){
+  const quickFields={
+    'Lote e quantidades':['lotName','started','startDate','phase'],
+    'Material biológico e origem':['cultivar','plantType','origin'],
+    'Local e sistema registrado':['environment','location'],
+    'Recipientes e meio de cultivo':['medium','containerVolume','containerShape']
+  };
+  const ordered=[groups[1],groups[0],...groups.slice(2)];
+  for(const group of ordered){
     const section=document.createElement(group.advanced?'details':'fieldset');section.className='field-group';section.dataset.step=group.step;
     const title=document.createElement(group.advanced?'summary':'legend');title.textContent=group.title;section.append(title);
-    const grid=document.createElement('div');grid.className='form-grid';for(const definition of group.fields)grid.append(createField(definition));section.append(grid);$('form-fields').append(section);
+    const grid=document.createElement('div');grid.className='form-grid';
+    const quick=quickFields[group.title];
+    const visible=quick?quick.map(key=>group.fields.find(field=>field[0]===key)):group.fields;
+    for(const definition of visible)grid.append(createField(definition));section.append(grid);
+    if(quick){const advanced=document.createElement('details');advanced.className='additional-fields';const summary=document.createElement('summary');summary.textContent=group.step===0?'Mais informações e rastreabilidade (opcional)':'Detalhar configuração (opcional)';const extra=document.createElement('div');extra.className='form-grid';for(const definition of group.fields.filter(field=>!quick.includes(field[0])))extra.append(createField(definition));advanced.append(summary,extra);section.append(advanced)}
+    $('form-fields').append(section);
   }
+  cultivarPicker=GrowPWECatalog.attach($('field-cultivar'),{
+    onSelect:record=>{if(!$('field-lotName').value.trim()||$('field-lotName').value===autoLotName){autoLotName=(record.cepa+' · lote '+String(state.lots.length+1).padStart(2,'0')).slice(0,80);$('field-lotName').value=autoLotName}},
+    onClear:()=>{if($('field-lotName').value===autoLotName)$('field-lotName').value='';autoLotName=null}
+  });
+  $('field-started').addEventListener('input',()=>{if(!plannedEdited)$('field-planned').value=Math.max(1,Number($('field-started').value)||1)});
+  $('field-planned').addEventListener('input',()=>plannedEdited=true);
 }
 function localDate(){const now=new Date();return [now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-')}
 function readDraft(){
   const data={};for(const [key,,type] of fields){const raw=$('field-'+key).value.trim();data[key]=raw===''?null:type==='number'?Number(raw):raw}
+  data.cultivarReference=cultivarPicker.getSelection();
   return data;
 }
 function dataList(data, definitions){
@@ -138,15 +158,15 @@ function validateStep(){
   }return true;
 }
 function setStep(value){
-  step=value;$('review').hidden=step!==2;$('form-fields').hidden=step===2;
+  cultivarPicker.close();step=value;$('review').hidden=step!==2;$('form-fields').hidden=step===2;
   document.querySelectorAll('[data-step]').forEach(el=>el.hidden=Number(el.dataset.step)!==step);
   document.querySelectorAll('[data-step-indicator]').forEach(el=>{const current=Number(el.dataset.stepIndicator)===step;el.classList.toggle('current',current);if(current)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current')});
   $('previous').hidden=step===0;$('next').textContent=step===2?'Confirmar e criar lote':'Continuar';$('form-error').textContent='';
-  if(step===2){reviewedDraft=readDraft();$('review-summary').textContent=`${reviewedDraft.planned} unidades planejadas; ${reviewedDraft.started} espécimes serão criados e poderão receber etiquetas. Os dados permanecem privados neste navegador.`;$('review-fields').replaceChildren();for(const group of groups){const section=document.createElement('section');section.className='review-section';const heading=document.createElement('h3');heading.textContent=group.title;section.append(heading,dataList(reviewedDraft,group.fields));$('review-fields').append(section)}}
+  if(step===2){reviewedDraft=readDraft();$('review-summary').textContent=`${reviewedDraft.planned} unidades planejadas; ${reviewedDraft.started} espécimes serão criados e poderão receber etiquetas. Os dados permanecem privados neste navegador.`;$('review-fields').replaceChildren();for(const group of groups){const section=document.createElement('section');section.className='review-section';const heading=document.createElement('h3');heading.textContent=group.title;section.append(heading,dataList(reviewedDraft,group.fields));$('review-fields').append(section);if(group.title==='Material biológico e origem'&&reviewedDraft.cultivarReference)$('review-fields').append(GrowPWECatalog.renderReference(reviewedDraft.cultivarReference))}}
   $('create-dialog').scrollTop=0;
 }
 function openCreate(){
-  $('create-form').reset();$('field-startDate').value=localDate();document.querySelectorAll('#create-form details').forEach(el=>el.open=false);reviewedDraft=null;setStep(0);$('create-dialog').showModal();$('field-lotName').focus();
+  $('create-form').reset();cultivarPicker.reset();autoLotName=null;plannedEdited=false;$('field-startDate').value=localDate();document.querySelectorAll('#create-form details').forEach(el=>el.open=false);reviewedDraft=null;setStep(0);$('create-dialog').showModal();$('field-cultivar').focus();
 }
 function saveLot(){
   const data=reviewedDraft;if(!data){$('form-error').textContent='Revise o lote antes de confirmar.';return}
@@ -163,7 +183,7 @@ function detail(specimen){
   $('detail-copy').textContent='Identificação permanente · '+specimen.id;
   const lot=lotFor(specimen);$('detail-fields').replaceChildren();
   $('detail-fields').append(dataList({phase:specimen.phase,id:specimen.id,createdAt:specimen.createdAt?new Date(specimen.createdAt).toLocaleString('pt-BR'):'Não informado'},[['phase','Fase registrada'],['id','UUID do espécime'],['createdAt','Registro criado em']]));
-  if(lot){for(const group of groups){const section=document.createElement('details');section.className='review-section';const summary=document.createElement('summary');summary.textContent=group.title;section.append(summary,dataList(lot.data,group.fields));$('detail-fields').append(section)}}
+  if(lot){if(lot.data.cultivarReference)$('detail-fields').append(GrowPWECatalog.renderReference(lot.data.cultivarReference));for(const group of groups){const section=document.createElement('details');section.className='review-section';const summary=document.createElement('summary');summary.textContent=group.title;section.append(summary,dataList(lot.data,group.fields));$('detail-fields').append(section)}}
   else {const p=document.createElement('p');p.textContent='Registro anterior / demonstrativo preservado. Dados de lote não informados.';$('detail-fields').append(p)}
   $('details').showModal();
 }

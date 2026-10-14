@@ -1,0 +1,913 @@
+{
+  "schema_version": 1,
+  "catalog_id": "user-cultivars-v1",
+  "source": {
+    "type": "user_provided",
+    "file_name": "Texto colado.txt",
+    "sha256": "37045dd7838341360f1bd025df841ec543d1ca0b3638d34db3c8f7cac42918b9",
+    "verification_status": "unverified",
+    "bibliographic_sources": []
+  },
+  "records": [
+    {
+      "id": 1,
+      "cepa": "Acapulco Gold",
+      "thc_medio": "19-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "10-11",
+      "descricao": "Cítrico e terroso; efeito energético e cerebral."
+    },
+    {
+      "id": 2,
+      "cepa": "Afghan Kush",
+      "thc_medio": "17-21%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "7-8",
+      "descricao": "Pinho e haxixe doce; relaxamento profundo e sedação."
+    },
+    {
+      "id": 3,
+      "cepa": "AK-47",
+      "thc_medio": "15-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "350-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Floral e amadeirado; euforia duradoura e alerta."
+    },
+    {
+      "id": 4,
+      "cepa": "AK-48",
+      "thc_medio": "15-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "7-9",
+      "descricao": "Doce e floral; efeito híbrido equilibrado."
+    },
+    {
+      "id": 5,
+      "cepa": "Alien OG",
+      "thc_medio": "20-28%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "300-400",
+      "floracao_semanas": "8-9",
+      "descricao": "Limão e pinho; efeito intenso, cerebral e corporal."
+    },
+    {
+      "id": 6,
+      "cepa": "Amnesia Haze",
+      "thc_medio": "20-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "600-650",
+      "floracao_semanas": "10-12",
+      "descricao": "Limão terroso; foco, criatividade e euforia."
+    },
+    {
+      "id": 7,
+      "cepa": "Banana Kush",
+      "thc_medio": "18-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Banana fresca e doce; sociabilidade e relaxamento."
+    },
+    {
+      "id": 8,
+      "cepa": "Big Bud",
+      "thc_medio": "15-18%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "7-9",
+      "descricao": "Frutado e picante; relaxamento físico, flores gigantes."
+    },
+    {
+      "id": 9,
+      "cepa": "Black Cherry Punch",
+      "thc_medio": "20-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "8-9",
+      "descricao": "Cereja e amora; sedativo, ideal para fim de dia."
+    },
+    {
+      "id": 10,
+      "cepa": "Black Domina",
+      "thc_medio": "18-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "7-8",
+      "descricao": "Pimentas e amora; forte sedação e alívio de dor."
+    },
+    {
+      "id": 11,
+      "cepa": "Blackberry Kush",
+      "thc_medio": "16-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "8-9",
+      "descricao": "Frutas escuras; relaxamento muscular profundo."
+    },
+    {
+      "id": 12,
+      "cepa": "Blue Cheese",
+      "thc_medio": "15-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-550",
+      "floracao_semanas": "8-9",
+      "descricao": "Queijo e mirtilo doce; alívio de estresse e euforia."
+    },
+    {
+      "id": 13,
+      "cepa": "Blue Dream",
+      "thc_medio": "17-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "9-10",
+      "descricao": "Frutas vermelhas doces; efeito criativo e equilibrado."
+    },
+    {
+      "id": 14,
+      "cepa": "Blueberry",
+      "thc_medio": "16-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Mirtilo fresco; relaxamento físico e felicidade."
+    },
+    {
+      "id": 15,
+      "cepa": "Bruce Banner",
+      "thc_medio": "24-29%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "9-10",
+      "descricao": "Morango e diesel; euforia rápida e produtividade."
+    },
+    {
+      "id": 16,
+      "cepa": "Bubba Kush",
+      "thc_medio": "15-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Café e chocolate; relaxamento muscular, ideal para insônia."
+    },
+    {
+      "id": 17,
+      "cepa": "Bubblegum",
+      "thc_medio": "15-19%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Chiclete doce; efeito levemente eufórico e corporal."
+    },
+    {
+      "id": 18,
+      "cepa": "Candyland",
+      "thc_medio": "19-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "8-9",
+      "descricao": "Doce e picante; energia mental e socialização."
+    },
+    {
+      "id": 19,
+      "cepa": "Cannatonic",
+      "thc_medio": "7-15%",
+      "cbd_medio": "12-18%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Cítrico e pinho; alívio de ansiedade sem forte psicoatividade."
+    },
+    {
+      "id": 20,
+      "cepa": "Charlotte's Web",
+      "thc_medio": "<1%",
+      "cbd_medio": "15-20%",
+      "rendimento_g_m2": "350-450",
+      "floracao_semanas": "8-9",
+      "descricao": "Floral e terroso; uso estritamente medicinal (epilepsia/dor)."
+    },
+    {
+      "id": 21,
+      "cepa": "Cheese / UK Cheese",
+      "thc_medio": "15-18%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Queijo curado pungente; relaxamento feliz e apetite."
+    },
+    {
+      "id": 22,
+      "cepa": "Chemdawg",
+      "thc_medio": "18-26%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Combustível e químico; forte efeito cerebral e corporal."
+    },
+    {
+      "id": 23,
+      "cepa": "Cherry Pie",
+      "thc_medio": "16-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Torta de cereja azeda; relaxamento mental e alívio de estresse."
+    },
+    {
+      "id": 24,
+      "cepa": "Chocolope",
+      "thc_medio": "18-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "10-12",
+      "descricao": "Café e chocolate melão; efeito estimulante, ideal para o dia."
+    },
+    {
+      "id": 25,
+      "cepa": "Cinderella 99 (C99)",
+      "thc_medio": "18-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "7-8",
+      "descricao": "Frutas tropicais; euforia rápida, floração muito veloz."
+    },
+    {
+      "id": 26,
+      "cepa": "Critical",
+      "thc_medio": "18-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "600-700",
+      "floracao_semanas": "7-8",
+      "descricao": "Cítrico terroso; alto rendimento, relaxamento e apetite."
+    },
+    {
+      "id": 27,
+      "cepa": "Critical Kush",
+      "thc_medio": "20-25%",
+      "cbd_medio": "1-2%",
+      "rendimento_g_m2": "550-650",
+      "floracao_semanas": "8-9",
+      "descricao": "Pinho e terroso; sedativo forte, excelente para dores."
+    },
+    {
+      "id": 28,
+      "cepa": "Critical Mass",
+      "thc_medio": "19-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "650-750",
+      "floracao_semanas": "8-9",
+      "descricao": "Cítrico e doce; extrema produção, botões densos."
+    },
+    {
+      "id": 29,
+      "cepa": "Death Star",
+      "thc_medio": "18-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Skunk e diesel; euforia inicial seguida de relaxamento forte."
+    },
+    {
+      "id": 30,
+      "cepa": "Diesel",
+      "thc_medio": "15-19%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Combustível doce; energia clara e foco mental."
+    },
+    {
+      "id": 31,
+      "cepa": "Do-Si-Dos",
+      "thc_medio": "20-30%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "8-9",
+      "descricao": "Terroso e floral doce; sedativo potente e eufórico."
+    },
+    {
+      "id": 32,
+      "cepa": "Durban Poison",
+      "thc_medio": "17-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "8-10",
+      "descricao": "Anis e picante; pura sativa, energia limpa e produtividade."
+    },
+    {
+      "id": 33,
+      "cepa": "Ed Rosenthal Super Bud",
+      "thc_medio": "18-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "8-10",
+      "descricao": "Abacaxi e doce; efeito misto de corpo e mente."
+    },
+    {
+      "id": 34,
+      "cepa": "Fire OG",
+      "thc_medio": "20-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "9-10",
+      "descricao": "Limão e pinho ardente; forte relaxamento após euforia cerebral."
+    },
+    {
+      "id": 35,
+      "cepa": "Fruity Pebbles",
+      "thc_medio": "18-21%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Frutas tropicais doces; alívio de estresse e alegria."
+    },
+    {
+      "id": 36,
+      "cepa": "G13",
+      "thc_medio": "20-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "9-10",
+      "descricao": "Frutado e amadeirado; sedação profunda (origem lenda governamental)."
+    },
+    {
+      "id": 37,
+      "cepa": "Gary Payton",
+      "thc_medio": "20-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Pimenta e damasco; energia social e falante, sem ansiedade."
+    },
+    {
+      "id": 38,
+      "cepa": "Gelato",
+      "thc_medio": "20-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Sorvete de frutas e lavanda; relaxamento pesado e euforia."
+    },
+    {
+      "id": 39,
+      "cepa": "Gelato #33",
+      "thc_medio": "20-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Cítrico e doce terroso; equilíbrio perfeito mente/corpo."
+    },
+    {
+      "id": 40,
+      "cepa": "Ghost Train Haze",
+      "thc_medio": "25-28%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "10-12",
+      "descricao": "Limão e floral azedo; efeito psicodélico e cerebral extremo."
+    },
+    {
+      "id": 41,
+      "cepa": "Girl Scout Cookies (GSC)",
+      "thc_medio": "25-28%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Menta e biscoito doce; euforia intensa seguida de relaxamento."
+    },
+    {
+      "id": 42,
+      "cepa": "God's Gift",
+      "thc_medio": "18-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "8-9",
+      "descricao": "Uva e cítrico; alívio rápido de dores e sonolência."
+    },
+    {
+      "id": 43,
+      "cepa": "Golden Goat",
+      "thc_medio": "16-23%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "9-11",
+      "descricao": "Tropical e picante; forte criatividade e energia."
+    },
+    {
+      "id": 44,
+      "cepa": "Gorilla Glue #4 (GG4)",
+      "thc_medio": "25-30%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "8-9",
+      "descricao": "Pinho e chocolate amargo; te 'cola' no sofá, alta resina."
+    },
+    {
+      "id": 45,
+      "cepa": "Granddaddy Purple (GDP)",
+      "thc_medio": "17-23%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-500",
+      "floracao_semanas": "8-11",
+      "descricao": "Uva doce e amora; sedação clássica, alívio de dor."
+    },
+    {
+      "id": 46,
+      "cepa": "Grape Ape",
+      "thc_medio": "15-23%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "7-8",
+      "descricao": "Uva forte e skunk; relaxamento corporal profundo."
+    },
+    {
+      "id": 47,
+      "cepa": "Green Crack",
+      "thc_medio": "15-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "7-9",
+      "descricao": "Manga e cítrico azedo; energia extrema e foco mental."
+    },
+    {
+      "id": 48,
+      "cepa": "Harlequin",
+      "thc_medio": "4-7%",
+      "cbd_medio": "8-16%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Manga e terra; foco claro sem intoxicação, alívio de dores."
+    },
+    {
+      "id": 49,
+      "cepa": "Hash Plant",
+      "thc_medio": "13-18%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "6-8",
+      "descricao": "Haxixe e especiarias; floração rápida, forte corpo."
+    },
+    {
+      "id": 50,
+      "cepa": "Hawaiian Snow",
+      "thc_medio": "18-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "600-700",
+      "floracao_semanas": "11-12",
+      "descricao": "Eucalipto e cítrico; efeito cerebral muito alto e duradouro."
+    },
+    {
+      "id": 51,
+      "cepa": "Headband",
+      "thc_medio": "20-27%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "9-10",
+      "descricao": "Limão e diesel; pressão agradável na cabeça (daí o nome)."
+    },
+    {
+      "id": 52,
+      "cepa": "Hindu Kush",
+      "thc_medio": "15-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "7-8",
+      "descricao": "Sândalo doce e haxixe; relaxamento puro e meditativo."
+    },
+    {
+      "id": 53,
+      "cepa": "Ice Cream Cake",
+      "thc_medio": "20-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Baunilha e massa doce; altamente sedativo e relaxante."
+    },
+    {
+      "id": 54,
+      "cepa": "Jack Herer",
+      "thc_medio": "18-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "9-10",
+      "descricao": "Pinho picante e terroso; clareza mental e criatividade."
+    },
+    {
+      "id": 55,
+      "cepa": "Kosher Kush",
+      "thc_medio": "20-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "9-10",
+      "descricao": "Terroso e frutas escuras; vencedor de copas, forte sono."
+    },
+    {
+      "id": 56,
+      "cepa": "LA Confidential",
+      "thc_medio": "16-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "350-450",
+      "floracao_semanas": "7-8",
+      "descricao": "Pinho doce e picante; relaxamento psicodélico e físico."
+    },
+    {
+      "id": 57,
+      "cepa": "Larry OG",
+      "thc_medio": "20-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Limão e pinho; corpo relaxado mas mente alerta."
+    },
+    {
+      "id": 58,
+      "cepa": "Lemon Skunk",
+      "thc_medio": "15-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Limão skunk pungente; energia eufórica e cerebral."
+    },
+    {
+      "id": 59,
+      "cepa": "MAC 1",
+      "thc_medio": "20-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "9-10",
+      "descricao": "Laranja, manteiga e terroso; relaxamento e elevação de humor."
+    },
+    {
+      "id": 60,
+      "cepa": "Mandarin Cookies",
+      "thc_medio": "19-26%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Laranja doce e amêndoas; energia alerta seguida de paz."
+    },
+    {
+      "id": 61,
+      "cepa": "Mango Kush",
+      "thc_medio": "16-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "8-9",
+      "descricao": "Manga e banana; relaxamento alegre e sociabilidade."
+    },
+    {
+      "id": 62,
+      "cepa": "Master Kush",
+      "thc_medio": "20-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "8-9",
+      "descricao": "Cítrico terroso e haxixe; alivia tensão sem anestesiar a mente."
+    },
+    {
+      "id": 63,
+      "cepa": "Maui Wowie",
+      "thc_medio": "15-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "9-11",
+      "descricao": "Abacaxi tropical; efeito energético de verão e criatividade."
+    },
+    {
+      "id": 64,
+      "cepa": "Mimosa",
+      "thc_medio": "19-27%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "9-10",
+      "descricao": "Laranja e cítrico doce; ideal para manhãs, foco e energia."
+    },
+    {
+      "id": 65,
+      "cepa": "Moby Dick",
+      "thc_medio": "20-27%",
+      "cbd_medio": "1%",
+      "rendimento_g_m2": "600-700",
+      "floracao_semanas": "9-10",
+      "descricao": "Baunilha e eucalipto; alto rendimento, efeito muito forte e mental."
+    },
+    {
+      "id": 66,
+      "cepa": "Motorbreath",
+      "thc_medio": "24-28%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Combustível e carne defumada; potente para dores crônicas."
+    },
+    {
+      "id": 67,
+      "cepa": "Northern Lights",
+      "thc_medio": "16-21%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "7-8",
+      "descricao": "Pinho e especiarias doces; a clássica cepa de ninar e alívio."
+    },
+    {
+      "id": 68,
+      "cepa": "NYC Diesel",
+      "thc_medio": "18-21%",
+      "cbd_medio": "1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "9-11",
+      "descricao": "Toranja vermelha (grapefruit); sem paranóia, muito social."
+    },
+    {
+      "id": 69,
+      "cepa": "Obama Kush",
+      "thc_medio": "14-21%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "8-9",
+      "descricao": "Uva e pinho terroso; inspiração mental e corpo solto."
+    },
+    {
+      "id": 70,
+      "cepa": "OG Kush",
+      "thc_medio": "20-26%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Combustível, limão e pinho; o padrão ouro, euforia e corpo."
+    },
+    {
+      "id": 71,
+      "cepa": "Oreoz",
+      "thc_medio": "22-33%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Chocolate, café e tabaco; altíssimo THC, relaxamento brutal."
+    },
+    {
+      "id": 72,
+      "cepa": "Panama Red",
+      "thc_medio": "16-21%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "11-12",
+      "descricao": "Chá herbal e terra; landrace sativa clássica, psicodélica."
+    },
+    {
+      "id": 73,
+      "cepa": "Papaya",
+      "thc_medio": "15-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Mamão doce e pimenta; letargia mental, muito calmante."
+    },
+    {
+      "id": 74,
+      "cepa": "Pennywise",
+      "thc_medio": "12-15%",
+      "cbd_medio": "12-15%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Café e pimenta; rácio 1:1, excelente para epilepsia e TEPT."
+    },
+    {
+      "id": 75,
+      "cepa": "Pineapple Express",
+      "thc_medio": "19-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-550",
+      "floracao_semanas": "8-9",
+      "descricao": "Abacaxi, cedro e maçã; energia alerta e produtividade criativa."
+    },
+    {
+      "id": 76,
+      "cepa": "Purple Haze",
+      "thc_medio": "16-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Frutas escuras doces; energia nostálgica, sociabilidade e alegria."
+    },
+    {
+      "id": 77,
+      "cepa": "Purple Kush",
+      "thc_medio": "17-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "8-9",
+      "descricao": "Uva doce e terra; pura indica de sedação, 100% relaxante."
+    },
+    {
+      "id": 78,
+      "cepa": "Runtz",
+      "thc_medio": "24-29%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Bala frutada (Skittles); euforia vibrante, resina abundante."
+    },
+    {
+      "id": 79,
+      "cepa": "Shiva Skunk",
+      "thc_medio": "15-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "7-8",
+      "descricao": "Cítrico azedo e skunk; indica potente de relaxamento rápido."
+    },
+    {
+      "id": 80,
+      "cepa": "Skunk #1",
+      "thc_medio": "15-19%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "8-9",
+      "descricao": "Skunk original terroso; a mãe das híbridas, estável e forte."
+    },
+    {
+      "id": 81,
+      "cepa": "Skywalker OG",
+      "thc_medio": "20-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "8-9",
+      "descricao": "Haxixe e combustível; 'te leva para o espaço', relaxamento total."
+    },
+    {
+      "id": 82,
+      "cepa": "Slurricane",
+      "thc_medio": "24-28%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "9-10",
+      "descricao": "Amora e uva doce; te derruba no sofá lentamente."
+    },
+    {
+      "id": 83,
+      "cepa": "Somango",
+      "thc_medio": "15-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Manga madura; criatividade cerebral limpa sem letargia."
+    },
+    {
+      "id": 84,
+      "cepa": "Sour Diesel",
+      "thc_medio": "20-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "10-11",
+      "descricao": "Diesel pungente e limão; sativa de energia pura, zero cansaço."
+    },
+    {
+      "id": 85,
+      "cepa": "Stardawg",
+      "thc_medio": "20-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Químico e pinho; alivia estresse instantâneo, elevação mental."
+    },
+    {
+      "id": 86,
+      "cepa": "Strawberry Cough",
+      "thc_medio": "17-23%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-450",
+      "floracao_semanas": "9-10",
+      "descricao": "Morango doce; alivia a ansiedade com energia feliz, faz tossir."
+    },
+    {
+      "id": 87,
+      "cepa": "Sunset Sherbet",
+      "thc_medio": "18-24%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Sobremesa de frutas e mel; relaxamento que derrete a tensão."
+    },
+    {
+      "id": 88,
+      "cepa": "Super Lemon Haze",
+      "thc_medio": "19-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "600-800",
+      "floracao_semanas": "9-10",
+      "descricao": "Limão siciliano forte; a sativa mais premiada, pura energia."
+    },
+    {
+      "id": 89,
+      "cepa": "Super Silver Haze",
+      "thc_medio": "18-23%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "10-11",
+      "descricao": "Cítrico azedo e especiarias; energia corporal revigorante."
+    },
+    {
+      "id": 90,
+      "cepa": "Super Skunk",
+      "thc_medio": "16-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "7-8",
+      "descricao": "Skunk e queijo doce; extremamente fácil de cultivar, relaxante."
+    },
+    {
+      "id": 91,
+      "cepa": "Tahoe OG",
+      "thc_medio": "20-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "9-10",
+      "descricao": "Limão, pinho e terra; sedação muscular para insônia pesada."
+    },
+    {
+      "id": 92,
+      "cepa": "Tangie",
+      "thc_medio": "19-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "9-10",
+      "descricao": "Tangerina fresca; euforia cerebral, limpa e criativa."
+    },
+    {
+      "id": 93,
+      "cepa": "Trainwreck",
+      "thc_medio": "18-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "8-9",
+      "descricao": "Pinho azedo e menta; te atinge como um trem, forte cerebral."
+    },
+    {
+      "id": 94,
+      "cepa": "Watermelon Zkittlez",
+      "thc_medio": "20-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Melancia doce e frutas; relaxamento vibrante no corpo todo."
+    },
+    {
+      "id": 95,
+      "cepa": "Wedding Cake",
+      "thc_medio": "23-27%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "8-9",
+      "descricao": "Baunilha e pimenta terrosa; euforia rápida seguida de peso no corpo."
+    },
+    {
+      "id": 96,
+      "cepa": "White Rhino",
+      "thc_medio": "18-22%",
+      "cbd_medio": "1-2%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "8-9",
+      "descricao": "Terroso, amadeirado; indica narcótica excelente para dor."
+    },
+    {
+      "id": 97,
+      "cepa": "White Russian",
+      "thc_medio": "19-25%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Doce picante e skunk; cristalina de resina, altamente cerebral."
+    },
+    {
+      "id": 98,
+      "cepa": "White Widow",
+      "thc_medio": "18-20%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "450-550",
+      "floracao_semanas": "8-9",
+      "descricao": "Pinho floral e terra; clássica holandesa, energia falante."
+    },
+    {
+      "id": 99,
+      "cepa": "Zkittlez",
+      "thc_medio": "18-23%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "500-600",
+      "floracao_semanas": "8-9",
+      "descricao": "Balas tropicais; clareza mental e corpo relaxado, super frutada."
+    },
+    {
+      "id": 100,
+      "cepa": "Zombie Kush",
+      "thc_medio": "18-22%",
+      "cbd_medio": "<1%",
+      "rendimento_g_m2": "400-500",
+      "floracao_semanas": "8-9",
+      "descricao": "Pinho escuro e terroso; letargia total, estado zumbi (dormir)."
+    }
+  ]
+}

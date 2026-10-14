@@ -16,6 +16,20 @@ O cadastro tem três etapas: lote e material biológico; local, recipientes e eq
 
 Os campos opcionais registram informações declaradas, não recomendações. Informações ausentes permanecem nulas, separadas do valor zero. A organização dos metadados é inspirada no padrão [MIAPPE](https://github.com/MIAPPE/MIAPPE); não há declaração de conformidade completa nem validação científica dos registros.
 
+## Catálogo de cepas e cadastro simplificado
+
+O catálogo `data/cultivars.json` contém os 100 registros enviados pelo usuário em `Texto colado.txt`. A origem, o hash SHA-256 do arquivo e o estado **não verificado** acompanham os dados. Não foram fornecidas fontes bibliográficas; esse catálogo não integra a biblioteca acadêmica verificada.
+
+- Busque por nome no campo de cultivar; a busca ignora diferenças de caixa, acentos e pontuação.
+- Selecione uma sugestão com clique ou teclado (setas e Enter); cepas próprias continuam aceitas por cadastro manual.
+- A seleção sugere um nome para o lote quando o campo está vazio ou ainda tem a sugestão anterior; nomes escolhidos pelo usuário são preservados.
+- O campo de quantidade define as unidades iniciadas e acompanha a quantidade planejada até que o usuário altere explicitamente o planejamento nos campos adicionais.
+- Campos essenciais ficam visíveis; rastreabilidade e configurações detalhadas podem ser expandidas. Nenhum campo antigo foi eliminado.
+- Faixas de THC/CBD, rendimento, floração e descrição são referências do arquivo original, acessíveis em um painel opcional. Não são resultados medidos, previsões nem afirmações médicas verificadas.
+- A base não informa espécie, fotoperíodo/autoflorescência, origem, sexo observado ou fornecedor; esses campos não são inferidos.
+- O lote guarda uma cópia da referência selecionada e sua origem, disponível na revisão, nos detalhes e na exportação. Editar o nome da cultivar desvincula a referência anterior.
+- Se o catálogo não carregar, o cadastro manual permanece disponível.
+
 ## Etiquetas
 
 Em **Espécimes**, selecione os registros e clique em **Preparar etiquetas**. Também é possível reimprimir uma única etiqueta nos detalhes do espécime. A reimpressão preserva o identificador.
@@ -40,4 +54,4 @@ Em **Espécimes**, selecione os registros e clique em **Preparar etiquetas**. Ta
 
 ## Validação de desenvolvimento
 
-Com o servidor em execução, rode `node tests/smoke.cjs` em um ambiente com Playwright e Chromium instalados. O script usa contextos isolados, verifica criação e revisão, migração, persistência, preservação de dados inválidos, exportação e geração de etiquetas/PDF em rolo e A4. Usa `GROWPWE_TEST_URL` e `GROWPWE_CHROMIUM` como substituições opcionais. A validação não envia impressão a dispositivos físicos.
+Com o servidor em execução, rode `node tests/smoke.cjs` e `node tests/catalog.cjs` em um ambiente com Playwright e Chromium instalados. O script usa contextos isolados, verifica criação e revisão, migração, persistência, preservação de dados inválidos, exportação e geração de etiquetas/PDF em rolo e A4. Usa `GROWPWE_TEST_URL` e `GROWPWE_CHROMIUM` como substituições opcionais. A validação não envia impressão a dispositivos físicos.
