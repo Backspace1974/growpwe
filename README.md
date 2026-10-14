@@ -30,6 +30,26 @@ O catálogo `data/cultivars.json` contém os 100 registros enviados pelo usuári
 - O lote guarda uma cópia da referência selecionada e sua origem, disponível na revisão, nos detalhes e na exportação. Editar o nome da cultivar desvincula a referência anterior.
 - Se o catálogo não carregar, o cadastro manual permanece disponível.
 
+## Painel e operações do laboratório
+
+O painel mostra registros ativos, lotes, espécimes selecionados para estudo, medições e contagens por fase. Fases disponíveis: sementes, clonagem, enraizamento, vegetação, floração, encerrado e não informado. São estados registrados pelo usuário, sem instruções para executar os processos.
+
+- Em um lote, use **Operar lote**; ou selecione registros e use **Registrar operação**. Nos detalhes, opere um único espécime.
+- Registre observações, mudanças de fase, localização, seleção para acompanhamento e alterações de equipamento em texto. Informe data/hora, responsável declarado e motivo. É possível retirar a seleção para estudo.
+- Os eventos preservam o histórico anterior; a configuração inicial do lote permanece identificada como cadastro inicial. Registros de troca de equipamento não substituem automaticamente os campos técnicos originais.
+- **Registrar descendentes** associa novos registros a um espécime de origem, com UUIDs próprios e geração documental. A identificação biológica declarada pode ser herdada; condições ambientais, recipientes e equipamentos não são presumidos iguais aos da origem.
+- O vínculo não comprova identidade genética ou estabilidade. Resultados e critérios do estudo podem ser documentados nas observações.
+- **Excluir lote** e **Excluir espécime** movem os registros para a lixeira após confirmação. Eles são retirados do painel e da seleção de etiquetas, mas continuam na exportação.
+- A restauração preserva UUIDs e histórico. Restaurar um lote não restaura espécimes excluídos individualmente antes dele. Descendentes em outros lotes permanecem ativos quando a origem é excluída.
+
+## Ficha de condições
+
+Em **Condições**, registre observações para um espécime ou para uma unidade compartilhada de lote/ambiente. São registros distintos; uma medição compartilhada não vira múltiplas repetições independentes.
+
+Os filtros usam lote, fase, cultivar e meio registrados no momento da observação. A ficha inclui variável, valor, unidade, amostra, instrumento, método/calibração, data/hora, responsável declarado e referência documental opcional. Fase, meio e cultivar declarados ficam registrados como contexto no momento da medição. Valores ausentes e zero permanecem distintos. Medições são preservadas quando o lote é enviado à lixeira.
+
+Não há faixas ideais predefinidas, recomendações de cultivo, comparação automática com limites ou certificação de conformidade. A referência MIAPPE organiza a documentação de observações; não é um guia de cultivo. Protocolos inseridos não foram validados pelo sistema.
+
 ## Etiquetas
 
 Em **Espécimes**, selecione os registros e clique em **Preparar etiquetas**. Também é possível reimprimir uma única etiqueta nos detalhes do espécime. A reimpressão preserva o identificador.
@@ -50,8 +70,8 @@ Em **Espécimes**, selecione os registros e clique em **Preparar etiquetas**. Ta
 - Sem backend, autenticação, isolamento entre associações ou compartilhamento real.
 - Exemplos iniciais são fictícios. Não insira dados pessoais ou sensíveis nesta demonstração.
 - A biblioteca acadêmica ainda não contém estudos verificados.
-- Este cadastro não implementa ainda um diário de medições, alteração de fases ou atualização das configurações após a criação.
+- O histórico é local e editável pelo navegador; não é um registro imutável ou um sistema de auditoria certificado. Responsáveis são informados pelo usuário, sem autenticação.
 
 ## Validação de desenvolvimento
 
-Com o servidor em execução, rode `node tests/smoke.cjs` e `node tests/catalog.cjs` em um ambiente com Playwright e Chromium instalados. O script usa contextos isolados, verifica criação e revisão, migração, persistência, preservação de dados inválidos, exportação e geração de etiquetas/PDF em rolo e A4. Usa `GROWPWE_TEST_URL` e `GROWPWE_CHROMIUM` como substituições opcionais. A validação não envia impressão a dispositivos físicos.
+Com o servidor em execução, rode `node tests/smoke.cjs`, `node tests/catalog.cjs` e `node tests/laboratory.cjs` em um ambiente com Playwright e Chromium instalados. O script usa contextos isolados, verifica criação e revisão, migração, persistência, preservação de dados inválidos, exportação e geração de etiquetas/PDF em rolo e A4. Usa `GROWPWE_TEST_URL` e `GROWPWE_CHROMIUM` como substituições opcionais. A validação cobre também operações, vínculos de origem, medições, exclusão e restauração. Não envia impressão a dispositivos físicos.

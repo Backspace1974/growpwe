@@ -1,7 +1,7 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const STORAGE_KEY = 'growpwe-v1';
-const phaseOptions = ['Não informado', 'Sementes', 'Vegetação', 'Floração', 'Encerrado'];
+const phaseOptions = ['Não informado', 'Sementes', 'Clonagem', 'Enraizamento', 'Vegetação', 'Floração', 'Encerrado'];
 const groups = [
   {title: 'Lote e quantidades', step: 0, fields: [
     ['lotName', 'Nome do lote', 'text', {required:true,maxLength:80}],
@@ -142,9 +142,9 @@ function readDraft(){
   data.cultivarReference=cultivarPicker.getSelection();
   return data;
 }
-function dataList(data, definitions){
+function dataList(data, definitions, compact=false){
   const list=document.createElement('dl');list.className='data-list';
-  for(const [key,label] of definitions){const term=document.createElement('dt');term.textContent=label;const description=document.createElement('dd');description.textContent=data[key]===null||data[key]===undefined||data[key]===''?'Não informado':String(data[key]);list.append(term,description)}return list;
+  for(const [key,label] of definitions){if(compact&&!["phase","plantType","origin","medium"].includes(key)&&(data[key]===null||data[key]===undefined||data[key]===''||data[key]==='Não informado'||data[key]==='Não observado'))continue;const term=document.createElement('dt');term.textContent=label;const description=document.createElement('dd');description.textContent=data[key]===null||data[key]===undefined||data[key]===''?'Não informado':String(data[key]);list.append(term,description)}return list;
 }
 function validateStep(){
   $('form-error').textContent='';
@@ -162,7 +162,7 @@ function setStep(value){
   document.querySelectorAll('[data-step]').forEach(el=>el.hidden=Number(el.dataset.step)!==step);
   document.querySelectorAll('[data-step-indicator]').forEach(el=>{const current=Number(el.dataset.stepIndicator)===step;el.classList.toggle('current',current);if(current)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current')});
   $('previous').hidden=step===0;$('next').textContent=step===2?'Confirmar e criar lote':'Continuar';$('form-error').textContent='';
-  if(step===2){reviewedDraft=readDraft();$('review-summary').textContent=`${reviewedDraft.planned} unidades planejadas; ${reviewedDraft.started} espécimes serão criados e poderão receber etiquetas. Os dados permanecem privados neste navegador.`;$('review-fields').replaceChildren();for(const group of groups){const section=document.createElement('section');section.className='review-section';const heading=document.createElement('h3');heading.textContent=group.title;section.append(heading,dataList(reviewedDraft,group.fields));$('review-fields').append(section);if(group.title==='Material biológico e origem'&&reviewedDraft.cultivarReference)$('review-fields').append(GrowPWECatalog.renderReference(reviewedDraft.cultivarReference))}}
+  if(step===2){reviewedDraft=readDraft();$('review-summary').textContent=`${reviewedDraft.planned} unidades planejadas; ${reviewedDraft.started} espécimes serão criados e poderão receber etiquetas. Os dados permanecem privados neste navegador.`;$('review-fields').replaceChildren();for(const group of groups){const section=document.createElement('section');section.className='review-section';const heading=document.createElement('h3');heading.textContent=group.title;const values=dataList(reviewedDraft,group.fields,true);if(values.children.length){section.append(heading,values);$('review-fields').append(section);}if(group.title==='Material biológico e origem'&&reviewedDraft.cultivarReference)$('review-fields').append(GrowPWECatalog.renderReference(reviewedDraft.cultivarReference))}}
   $('create-dialog').scrollTop=0;
 }
 function openCreate(){
@@ -178,18 +178,21 @@ function saveLot(){
   state=candidate;reviewedDraft=null;render();$('create-dialog').close();page('specimens');toast(specimens.length?`Lote salvo: ${specimens.length} espécimes criados. Você pode selecionar e imprimir suas etiquetas.`:'Planejamento salvo. Nenhum espécime foi criado porque a quantidade iniciada é zero.');
 }
 function lotFor(specimen){return state.lots.find(l=>l.id===specimen.lotId)}
+function activeSpecimens(){return state.specimens.filter(s=>!s.archivedAt&&!lotFor(s)?.archivedAt)}
+function activeLots(){return state.lots.filter(l=>!l.archivedAt)}
+function visibleSpecimens(){const query=$('specimen-search').value.trim().toLocaleLowerCase('pt-BR');return activeSpecimens().filter(s=>(filter==='all'||s.phase===filter)&&(!query||[s.name,lotFor(s)?.data.lotName,lotFor(s)?.data.cultivar].some(value=>value?.toLocaleLowerCase('pt-BR').includes(query))))}
 function detail(specimen){
   detailedSpecimen=specimen;$('detail-title').textContent=specimen.name;
   $('detail-copy').textContent='Identificação permanente · '+specimen.id;
   const lot=lotFor(specimen);$('detail-fields').replaceChildren();
   $('detail-fields').append(dataList({phase:specimen.phase,id:specimen.id,createdAt:specimen.createdAt?new Date(specimen.createdAt).toLocaleString('pt-BR'):'Não informado'},[['phase','Fase registrada'],['id','UUID do espécime'],['createdAt','Registro criado em']]));
-  if(lot){if(lot.data.cultivarReference)$('detail-fields').append(GrowPWECatalog.renderReference(lot.data.cultivarReference));for(const group of groups){const section=document.createElement('details');section.className='review-section';const summary=document.createElement('summary');summary.textContent=group.title;section.append(summary,dataList(lot.data,group.fields));$('detail-fields').append(section)}}
+  if(lot){if(lot.data.cultivarReference)$('detail-fields').append(GrowPWECatalog.renderReference(lot.data.cultivarReference));for(const group of groups){const section=document.createElement('details');section.className='review-section';const summary=document.createElement('summary');summary.textContent=group.title+' · cadastro inicial';section.append(summary,dataList(lot.data,group.fields,true));$('detail-fields').append(section)}}
   else {const p=document.createElement('p');p.textContent='Registro anterior / demonstrativo preservado. Dados de lote não informados.';$('detail-fields').append(p)}
-  $('details').showModal();
+  if(window.Lab)Lab.renderDetail(specimen);$('details').showModal();
 }
 function render(){
   const rows=$('specimen-rows');rows.replaceChildren();
-  for(const specimen of state.specimens.filter(s=>filter==='all'||s.phase===filter)){
+  for(const specimen of visibleSpecimens()){
     const row=document.createElement('tr'),first=document.createElement('td'),wrap=document.createElement('div');wrap.className='specimen';
     const icon=document.createElement('span');icon.className='plant';icon.textContent='♧';
     const labels=document.createElement('div'),b=document.createElement('b'),small=document.createElement('small');b.textContent=specimen.name;small.textContent=lotFor(specimen)?.data.lotName||'Registro anterior / demonstrativo';labels.append(b,small);wrap.append(icon,labels);first.append(wrap);
@@ -198,22 +201,22 @@ function render(){
     const end=document.createElement('td'),button=document.createElement('button');button.className='row-detail';button.textContent='Ver';button.setAttribute('aria-label','Ver '+specimen.name);button.onclick=()=>detail(specimen);end.append(button);row.append(first,phase,visibility,end);rows.append(row);
   }
   if(!rows.children.length){const row=document.createElement('tr'),cell=document.createElement('td');cell.colSpan=4;cell.className='empty';cell.textContent='Nenhum registro nesta fase.';row.append(cell);rows.append(row)}
-  $('total').textContent=String(state.specimens.length).padStart(2,'0');$('phases').textContent=String(new Set(state.specimens.map(s=>s.phase).filter(p=>p!=='Não informado')).size).padStart(2,'0');
-  $('lot-list').replaceChildren();for(const lot of state.lots){const card=document.createElement('div');card.className='lot-card';const title=document.createElement('b');title.textContent=lot.data.lotName;const info=document.createElement('p');info.textContent=`${lot.data.planned} planejados · ${state.specimens.filter(s=>s.lotId===lot.id).length} registrados`;card.append(title,info);$('lot-list').append(card)}
-  $('specimen-list').replaceChildren();for(const specimen of state.specimens){
+  $('total').textContent=String(activeSpecimens().length).padStart(2,'0');$('phases').textContent=String(new Set(activeSpecimens().map(s=>s.phase).filter(p=>p!=='Não informado')).size).padStart(2,'0');
+  $('lot-list').replaceChildren();for(const lot of activeLots()){const card=document.createElement('div');card.className='lot-card';const title=document.createElement('b');title.textContent=lot.data.lotName;const info=document.createElement('p');info.textContent=`${lot.data.planned} planejados · ${activeSpecimens().filter(s=>s.lotId===lot.id).length} registrados`;card.append(title,info);if(window.Lab)Lab.lotActions(card,lot);$('lot-list').append(card)}
+  $('specimen-list').replaceChildren();for(const specimen of visibleSpecimens()){
     const row=document.createElement('div');row.className='specimen-item';
     const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.id='select-'+specimen.id;checkbox.dataset.specimenId=specimen.id;checkbox.checked=selected.has(specimen.id);checkbox.onchange=()=>{if(checkbox.checked)selected.add(specimen.id);else selected.delete(specimen.id);updateSelection()};
     const label=document.createElement('label');label.htmlFor=checkbox.id;label.append(document.createTextNode(specimen.name));const small=document.createElement('small');small.textContent=(lotFor(specimen)?.data.lotName||'Sem lote informado')+' · '+specimen.phase;label.append(small);
     const button=document.createElement('button');button.className='secondary';button.textContent='Detalhes';button.setAttribute('aria-label','Detalhes de '+specimen.name);button.onclick=()=>detail(specimen);row.append(checkbox,label,button);$('specimen-list').append(row);
   }
-  for(const id of selected)if(!state.specimens.some(s=>s.id===id))selected.delete(id);
-  updateSelection();
+  for(const id of selected)if(!activeSpecimens().some(s=>s.id===id))selected.delete(id);
+  updateSelection();$('list-count').textContent=visibleSpecimens().length+' registros visíveis de '+activeSpecimens().length+' ativos';if(window.Lab)Lab.render();
 }
-function updateSelection(){const count=selected.size;$('selected-count').textContent=`${count} selecionado${count===1?'':'s'}`;$('print-labels').disabled=count===0;$('select-all').checked=count>0&&count===state.specimens.length;$('select-all').indeterminate=count>0&&count<state.specimens.length}
-const titles={overview:['Cada registro conta uma história.','Acompanhe sua associação, um ciclo de cada vez.'],specimens:['Um histórico para cada espécime.','Cadastre lotes, revise os dados e imprima identificações individuais.'],references:['Conhecimento com origem.','Fontes verificáveis, contexto e transparência.'],community:['Aprender em comunidade.','Compartilhamento voluntário, construído com cuidado.']};
-function page(id){document.querySelectorAll('.panel').forEach(el=>el.classList.toggle('visible',el.id===id));document.querySelectorAll('[data-page]').forEach(el=>el.classList.toggle('active',el.dataset.page===id));$('page-title').textContent=titles[id][0];$('page-description').textContent=titles[id][1]}
+function updateSelection(){const count=selected.size,visible=visibleSpecimens(),inView=visible.filter(s=>selected.has(s.id)).length;$('selected-count').textContent=`${count} selecionado${count===1?'':'s'}`;$('print-labels').disabled=count===0;$('operate-selected').disabled=count===0;$('select-all').checked=visible.length>0&&inView===visible.length;$('select-all').indeterminate=inView>0&&inView<visible.length}
+const titles={overview:['Tudo no seu tempo.','Uma visão clara de cada lote, fase e registro.'],specimens:['Cada espécime, uma história.','Origem, identificação e operações em um só espaço.'],conditions:['Observe. Registre. Compare.','Medições com contexto, método e rastreabilidade.'],references:['Conhecimento com origem.','Documentação e fontes com status de verificação.'],trash:['Histórias preservadas.','Restaure registros excluídos sem alterar seus identificadores.'],community:['Aprender em comunidade.','Compartilhamento voluntário, construído com cuidado.']};
+function page(id){document.querySelectorAll('.panel').forEach(el=>el.classList.toggle('visible',el.id===id));document.querySelectorAll('[data-page]').forEach(el=>el.classList.toggle('active',el.dataset.page===id));$('page-title').textContent=titles[id][0];$('page-description').textContent=titles[id][1];$('breadcrumb-page').textContent={overview:'Dashboard',specimens:'Lotes e espécimes',conditions:'Condições',references:'Referências',trash:'Lixeira',community:'Comunidade'}[id];}
 function prepareLabels(ids){
-  printSelection=state.specimens.filter(s=>ids.includes(s.id));if(!printSelection.length)return;if(printSelection.length>5000){toast('Selecione até 5.000 espécimes por trabalho de impressão.');return}
+  printSelection=activeSpecimens().filter(s=>ids.includes(s.id));if(!printSelection.length)return;if(printSelection.length>5000){toast('Selecione até 5.000 espécimes por trabalho de impressão.');return}
   $('labels-summary').textContent=`${printSelection.length} etiqueta${printSelection.length===1?'':'s'}, uma por espécime selecionado. Inclui código, UUID, lote, cultivar declarada e data de início, quando informados.`;
   $('labels-error').textContent='';$('labels-dialog').showModal();
 }
@@ -228,7 +231,7 @@ $('new-specimen').onclick=openCreate;$('cancel').onclick=()=>$('create-dialog').
 // Validate the active step ourselves; hidden required fields must not block navigation.
 $('create-form').noValidate=true;$('create-form').onsubmit=event=>{event.preventDefault();if(step===2)saveLot();else if(validateStep())setStep(step+1)};
 $('close-details').onclick=()=>$('details').close();$('print-one').onclick=()=>{const id=detailedSpecimen.id;$('details').close();prepareLabels([id])};
-$('select-all').onchange=()=>{selected.clear();if($('select-all').checked)state.specimens.forEach(s=>selected.add(s.id));render()};
+$('select-all').onchange=()=>{for(const specimen of visibleSpecimens()){if($('select-all').checked)selected.add(specimen.id);else selected.delete(specimen.id)}render()};
 $('print-labels').onclick=()=>prepareLabels([...selected]);$('cancel-labels').onclick=()=>$('labels-dialog').close();$('export-data').onclick=exportData;
 $('labels-form').onsubmit=event=>{
   event.preventDefault();$('labels-error').textContent='';
