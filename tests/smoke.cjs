@@ -72,6 +72,7 @@ const base = process.env.GROWPWE_TEST_URL || 'http://127.0.0.1:8080';
     await boundary.pdf({preferCSSPageSize:true,path:'/tmp/growpwe-labels-multipage.pdf'});
     await boundary.goto(base+'/labels.html?job='+jobs.smallid);await boundary.waitForSelector('.label');
     await boundary.emulateMedia({media:'print'});
+    assert.equal(await boundary.locator('.code').innerText(),'PREFIX08-ABCDEF123456-999','generated accession must remain complete');
     assert.equal(await boundary.locator('.label').evaluate(el=>el.scrollHeight>el.clientHeight),false,'minimum-size label clips content');
     await boundary.pdf({preferCSSPageSize:true,path:'/tmp/growpwe-labels-small.pdf'});
     await boundary.close();

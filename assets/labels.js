@@ -4,7 +4,7 @@ function text(className,value){const element=document.createElement('div');eleme
 function short(value,max){return value.length>max?value.slice(0,max-1)+'…':value}
 function makeLabel(record,job){
   const label=document.createElement('article');label.className='label'+(job.width<55||job.height<35?' small-label':'');label.dataset.specimenId=record.id;
-  const code=short(record.code,job.width<55?24:40);const max=Math.floor(job.width*1.4);
+  const code=short(record.code,job.width<55?32:48);const max=Math.floor(job.width*1.4);
   label.append(text('brand','GROWPWE · IDENTIFICAÇÃO'),text('code',code),text('meta','Lote: '+short(record.lot,max)),text('meta','Cultivar: '+short(record.cultivar,max)));
   if(record.startDate){const parts=record.startDate.split('-');label.append(text('label-date','Início: '+(parts.length===3?parts.reverse().join('/'):short(record.startDate,20))))}
   label.append(text('uuid','UUID '+record.id));return label;
